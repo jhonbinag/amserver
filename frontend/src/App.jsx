@@ -19,11 +19,11 @@ const App = () => {
         },
       }}
     >
-      <Router>
+      <Router basename="/">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
-            path="/dashboard"
+            path="/dashboard/*"
             element={
               <PrivateRoute>
                 <DashboardLayout />
@@ -32,7 +32,8 @@ const App = () => {
           >
             <Route index element={<Dashboard />} />
           </Route>
-          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
     </ConfigProvider>
